@@ -5,23 +5,9 @@ import { Navbar, Nav, Container, Button } from 'react-bootstrap';
 const NavigationBar = ({ isAuthenticated, userRole, onLogout }) => {
   console.log('Navbar props:', { isAuthenticated, userRole });
   return (
-    <Navbar style={{ 
-      backgroundColor: '#2a3f54',
-      boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
-      borderBottom: '1px solid #40566b'
-    }} variant="dark" expand="lg">
+    <Navbar style={{ backgroundColor: '#001f3f'}} variant="dark" expand="lg">
       <Container>
-        <Navbar.Brand 
-          as={Link} 
-          to="/"
-          style={{
-            color: '#e8f4fc',
-            fontWeight: '600',
-            letterSpacing: '0.5px'
-          }}
-        >
-          Ahmer Tariq
-        </Navbar.Brand>
+      <Navbar.Brand as={Link} to="/">HamzaAli-Instagram</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
@@ -37,7 +23,7 @@ const NavigationBar = ({ isAuthenticated, userRole, onLogout }) => {
               }}
               className="nav-link-hover"
             >
-              Main Page
+              Home
             </Nav.Link>
             {isAuthenticated && (
              <div>
@@ -46,21 +32,16 @@ const NavigationBar = ({ isAuthenticated, userRole, onLogout }) => {
               <Button
                 as={Link}
                 to="/creator"
+                variant="danger"
                 style={{
-                  borderRadius: '6px',
-                  padding: '8px 20px',
-                  fontWeight: '500',
-                  marginLeft: '300px',
-                  backgroundColor: '#4e7cff',
-                  borderColor: '#4e7cff',
-                  color: '#ffffff',
-                  textTransform: 'uppercase',
-                  fontSize: '0.85rem',
-                  letterSpacing: '0.5px'
+                  borderRadius: '20px',
+                  padding: '6px 16px',
+                  fontWeight: 'bold',
+                  marginLeft: '10px',
                 }}
                 className="btn-hover-effect"
               >
-                Create Content
+                Upload Post
               </Button>
             )}
               </div>

@@ -150,9 +150,9 @@ const renderMedia = () => {
           {comments.length === 0 ? (
             <p>No comments yet</p>
           ) : (
-            <ListGroup>
+            <ListGroup className="mb-3">
               {comments.map((c, i) => (
-                <ListGroup.Item key={i} style={{ borderRadius: '0' }}> {/* Rectangular */}
+                <ListGroup.Item key={i}> {/* Rectangular */}
                   <strong>{c.userId?.username || 'Anonymous'}: </strong>
                   {c.text}
                 </ListGroup.Item>
@@ -166,12 +166,14 @@ const renderMedia = () => {
               placeholder="Add a comment..."
               value={comment}
               onChange={(e) => setComment(e.target.value)}
-              style={{ borderRadius: '0' }} // Rectangular
+              required
             />
             <Button 
-              variant="primary" 
-              type="submit" 
-              className="mt-2"
+               variant="primary" 
+               type="submit" 
+               size="sm" 
+               className="mt-2"
+               disabled={!comment.trim()}
             >
               Post Comment
             </Button>
@@ -185,23 +187,26 @@ const renderMedia = () => {
               <span
                 key={star}
                 onClick={() => setRating(star)}
+                aria-label={`Rate ${star} star`}
                 onMouseEnter={() => setHoverRating(star)}
                 onMouseLeave={() => setHoverRating(0)}
                 style={{ 
                   cursor: 'pointer', 
-                  color: star <= (hoverRating || rating) ? 'gold' : 'gray',
-                  fontSize: '1.8rem',
+                  color: star <= rating ? 'gold' : 'gray',
+                  fontSize: '1.5rem',
                   marginRight: '5px'
                 }}
               >
-                ⭐
+                ★
               </span>
             ))}
           </div>
           <Button 
             variant="outline-primary" 
+            size="sm" 
             onClick={handleRatingSubmit}
             className="mt-2"
+            disabled={rating === 0}
           >
             Submit Rating
           </Button>
